@@ -10,8 +10,8 @@ class NotificationPresenter extends BasePresenter
     public function actionDefault($key) {
         if($key === 'example') {
             $notification = new Notification();
-            $notification->title = 'War in space';
-            $notification->describe = 'Lorem ipsum';
+            $notification->title = 'Desperate Puerto Ricans are drinking water from a hazardous-waste site';
+            $notification->describe = 'Source: https://edition.cnn.com/2017/10/13/us/puerto-rico-superfund-water/index.html';
             $notification->url = 'https://edition.cnn.com/2017/10/13/us/puerto-rico-superfund-water/index.html';
             $notification->key = '123';
         } else {

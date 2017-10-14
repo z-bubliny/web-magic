@@ -1,16 +1,43 @@
 {block content}
 
-<div class="jumbotron">
-    <div class="container" style="height: 100vh; width: 100vw;">
+<div class="jumbotron" id="home-top" name="home-top">
+    <div class="container">
         <h1 class="display-2">
-            <b>Z-Bubbles!</b>
+            <b>Language is not your limit!</b>
         </h1>
         <p class="display-4">
-        Revolutionary newsfeed <b>in your language</b>
+            Keep up-to-date with news from the world, no matter what language the messages were written in.
         </p>
 
         <div class="home-search">
             {control searchForm}
         </div>
+    </div>
+</div>
+
+<div class="container" id="use-cases" name="use-cases" style="padding-top:50px">
+    <h2>Language independent news</h2>
+    <h1>Whos life we will change soon?</h1>
+    <ul style="font-size:1.5em;">
+        <li>People who can only speak with one language will understand the whole world!</li>
+        <li>Reporters in newsrooms can subscribe to their field of interest</li>
+        <li>Organizations will be able to easily watch new war conflicts, humanitarian crisis, natural disasters or terrorism in the world</li>
+        <li>Smart and fast newsfeed for global market investors</li>
+    </ul>
+</div>
+
+<div style="width:100%;height:400px;background:url('{$basePath}/style/bg/news.jpg');background-size:cover;">
+</div>
+
+<div class="content" id="chatbot" name="chatbot">
+    <div class="container">
+        <h2>How to start with communicate with our chatbot?</h2>
+        <ol style="font-size:1.5em;">
+            <li>Write to our chatbot at: <a href="https://www.facebook.com/languageHackathonBot/" target="_blank">https://www.facebook.com/languageHackathonBot/</a></li>
+            <li>Relax and wait for news</li>
+        </ol>
+        <p class="text-center">
+            <a class="btn btn-primary btn-lg" n:href="Notification:,key=>'example'" role="button">Notification example »</a>
+        </p>
     </div>
 </div>

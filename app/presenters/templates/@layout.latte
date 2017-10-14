@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{$basePath}/style/style.css" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" n:href="Homepage:"><i class="fa fa-newspaper-o"></i>&nbsp; Z bubbles</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,25 +26,29 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" n:href="Homepage:">Home</a>
+                <a class="nav-link" n:href="Homepage:#top">Home</a>
               </li>
             <li class="nav-item">
-                <a class="nav-link" n:href="UseCases:">Use cases</a>
+                <a class="nav-link" n:href="Homepage:#use-cases">Use cases</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" n:href="Chatbot:">Chatbot</a>
+                <a class="nav-link" n:href="Homepage:#chatbot">Chatbot</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" n:href="Login:">Login</a>
             </li>
       </div>
     </nav>
+
+    <div style="height:55px;width:100%"></div>
+
     <div class="container">
         <div style="margin-top:20px;" n:foreach="$flashes as $flash" class="alert alert-{$flash->type}" role="alert">
             <i class="fa fa-{if $flash->type === 'danger' || $flash->type === 'warning'}warning{else}info-circle{/if}"></i>&nbsp;
             {$flash->message}
         </div>
     </div>
+
     {include content}
 
     <footer>
