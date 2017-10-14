@@ -1,0 +1,13 @@
+{block content}
+
+<div class="content">
+    <div class="container">
+        <h2>{$notification->title}</h2>
+        <p>
+            {$notification->describe}
+        </p>
+        <a class="btn btn-lg btn-primary" n:if="$notification->url" href="https://translate.google.com/translate?hl=cs&sl=en&u={$notification->url}">
+            <i class="fa fa-google"></i>&nbsp; Translate with Google Translate »
+        </a>
+    </div>
+</div>

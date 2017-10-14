@@ -1,0 +1,32 @@
+parameters:
+
+
+application:
+    errorPresenter: Error
+    mapping:
+        *: App\*Module\Presenters\*Presenter
+
+
+session:
+    expiration: 14 days
+
+services:
+    - App\Forms\FormFactory
+    - App\Forms\SearchFormFactory
+    - ZBubliny\Model\Service\UsersModel
+    router: App\RouterFactory::createRouter
+
+extensions:
+    console: Kdyby\Console\DI\ConsoleExtension
+    events: Kdyby\Events\DI\EventsExtension
+    annotations: Kdyby\Annotations\DI\AnnotationsExtension
+    doctrine: Kdyby\Doctrine\DI\OrmExtension
+    facebook: Kdyby\Facebook\DI\FacebookExtension
+
+facebook:
+    appId: "842520249243598"
+    permissions: [public_profile, email]
+    graphVersion: v2.3
+
+doctrine:
+    driver: pdo_pgsql
