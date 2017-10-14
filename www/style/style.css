@@ -7,3 +7,22 @@ footer {
     margin-top: 60px;
     padding-top: 10px;
 }
+
+#search-results .card {
+    margin-bottom: 20px;
+    clear: both;
+}
+
+.home-search {
+    width: 350px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.home-search tr {
+    width: 100%;
+}
+
+.home-search input {
+    width: 350px;
+}

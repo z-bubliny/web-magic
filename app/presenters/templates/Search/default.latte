@@ -2,14 +2,34 @@
 
 <div class="content">
     <div class="container">
-        <h2>Search: {$input}</h2>
+        <h2><i class="fa fa-search"></i> Search: {$input}</h2>
+        {control searchForm}
 
-        <div class="card" style="width: 100%;">
-            <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+        <div id="search-results">
+
         </div>
+
+        <script n:syntax="double">
+            $.get( "http://34.241.48.62:8800/search?keywords={{implode(',',$keywords)|noescape}}&limit=5", function( data ) {
+                var i = 0;
+                $.each(data, function( index, value ) {
+                    i++;
+                    $( "#search-results" ).append("<div class=\"card\">" +
+                        "<div class=\"card-body\">" +
+                        "<h4 class=\"card-title\">" + value.title + "</h4>" +
+                        "<p class=\"card-text\">Source: " + value.source + "</p>" +
+                        "<a href=\"" + value.source + "\" class=\"btn btn-primary\">Přejít na originál článek »</a>" +
+                        "&nbsp; <a class=\"btn btn-success\" href=\"https://translate.google.com/translate?hl=cs&sl=en&u=" + value.source + "\">\n" +
+                        "<i class=\"fa fa-google\"></i>&nbsp; Translate with Google Translate »\n" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>");
+                });
+
+                if(i == 0) {
+                    $( "#search-results" ).append("<br /><h3>No results.</h3>");
+                }
+            });
+        </script>
     </div>
 </div>

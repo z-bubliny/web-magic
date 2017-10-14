@@ -23,8 +23,11 @@ class SearchFormFactory
         $form = $this->factory->create();
         $form->addText('input')
             ->setRequired('Please enter your search term.')
-            ->getControlPrototype();
-        $form->addSubmit('submit', 'Search!');
+            ->getControlPrototype()
+            ->setAttribute('class', 'form-control');
+        $form->addSubmit('submit', 'Search now!')
+            ->getControlPrototype()
+            ->setAttribute('class', 'btn btn-primary btn-lg');
         $form->onSuccess[] = function (Form $form, $values) use ($onSuccess) {
             $onSuccess($values->input);
         };

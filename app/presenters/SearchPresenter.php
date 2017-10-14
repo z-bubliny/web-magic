@@ -2,28 +2,33 @@
 
 namespace App\Presenters;
 
+use App\Forms;
 use ZBubliny\Model\Entity\Notification;
+use Nette\Application\UI;
 
 class SearchPresenter extends BasePresenter
 {
+    /** @var Forms\SearchFormFactory */
+    private $searchFormFactory;
+
+    public function __construct(Forms\SearchFormFactory $searchFormFactory)
+    {
+        $this->searchFormFactory = $searchFormFactory;
+    }
 
     public function actionDefault($input) {
         $input = str_replace(' ',',', $input);
         $keywords = explode(',',$input);
 
         $this->template->input = $input;
-        $this->template->result = $this->askSearchApi($keywords);
+        $this->template->keywords = $keywords;
     }
 
-    private function askSearchApi(array $keywords) {
-        $curlSession = curl_init();
-        curl_setopt($curlSession, CURLOPT_URL, 'https://chart.googleapis.com/chart?cht=p3&chs=250x100&chd=t:60,40&chl=Hello|World&chof=json');
-        curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-        curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-
-        $jsonData = json_decode(curl_exec($curlSession));
-        curl_close($curlSession);
-        return $jsonData;
+    protected function createComponentSearchForm(): UI\Form
+    {
+        return $this->searchFormFactory->create(function ($input) {
+            $this->redirect('Search:', ['input' => $input]);
+        });
     }
 
 }
